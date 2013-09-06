@@ -36,7 +36,7 @@ end
 Pattern Matching
 ----------------
 
-It allows to hacky pattern matching using annonymous function for defining parameters. The example below shows equivalent Ruby code for Racket examples of list pattern matching usage.
+It allows to do hacky pattern matching using annonymous functions for defining parameters. The example below shows equivalent Ruby code for Racket examples of list pattern matching:
 
 
 ```ruby
@@ -91,7 +91,7 @@ end
 Method Ambiguities
 ------------------
 
-It is possible to define a set of function methods such that there is no unique most specific method applicable to some combinations of arguments:
+It is possible to define a set of methods such that there is no unique most specific method applicable to some combinations of arguments:
 
 ```ruby
 def_multi :arg, 1, Numeric do |*a|
@@ -101,6 +101,7 @@ def_multi :arg, Numeric, 2 do |*a|
   a.last
 end
 
+# is_one?(1) matches to the method with argument defined by value
 def_multi :is_one?, 1 do 
   true
 end
@@ -114,8 +115,9 @@ end
 1.9.3-p374 :001 > arg(1, 1337)
 1
 
-1.9.3-p374 :001 > f.arg(1337, 2)
+1.9.3-p374 :001 > arg(1337, 2)
 2
+
 ```
 
 
