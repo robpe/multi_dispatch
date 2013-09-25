@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["robert.pozoga@gmail.com"]
   spec.description   = %q{This gem provides light-weight and easy-to-use multiple dispatch generic methods.}
   spec.summary       = %q{Multiple dispatch for Ruby.}
-  spec.homepage      = "http://github.com/robpe/multi-dispatch"
+  spec.homepage      = "http://github.com/robpe/multi_dispatch"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
