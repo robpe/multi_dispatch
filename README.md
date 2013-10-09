@@ -9,7 +9,7 @@ Install
 gem install multi_dispatch
 ```
 
-or add `gem 'multidispatch'` to Gemfile and use `bundle`.
+or add `gem 'multi_dispatch'` to Gemfile and use `bundle`.
 
 
 Usage
