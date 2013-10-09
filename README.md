@@ -3,31 +3,42 @@ MultiDispatch
 
 multiple-dispatch is a library extending Ruby objects with multiple dispatch generic functions.
 
+Install
+-------
+```
+gem install multi_dispatch
+```
+
+or add `gem 'multidispatch'` to Gemfile and use `bundle`.
+
+
+Usage
+-----
+
 Look for examples in the examples/ directory and in test cases test/. Here are simple examples:
 
 Functional style
 ----------------
 
 ```ruby
-require_relative '../lib/multi_dispatch.rb'
 
 # reverse for Array
-MultiDispatch::def_multi :reverse, [] { [] }
-MultiDispatch::def_multi :reverse, Array do |list| 
+def_multi :reverse, [] { [] }
+def_multi :reverse, Array do |list| 
   [list.pop] + reverse(list) 
 end
 
 # map for Array
-MultiDispatch::def_multi :map, [], Proc do ; [] end
-MultiDispatch::def_multi :map, Array, Proc do |list, func|
+def_multi :map, [], Proc do ; [] end
+def_multi :map, Array, Proc do |list, func|
   [func.call(list.first)] + map(list[1..-1], func)
 end
 
 # foldl for Array (equivalent to haskell implementation in Data.List module)
-MultiDispatch::def_multi :foldl, Proc, Object, [] do |f, init, l|
+def_multi :foldl, Proc, Object, [] do |f, init, l|
   init
 end
-MultiDispatch::def_multi :foldl, Proc, Object, Array do |f, init, l|
+def_multi :foldl, Proc, Object, Array do |f, init, l|
   foldl(f, f.call(init, l.first), l.drop(1)) 
 end
 ```
